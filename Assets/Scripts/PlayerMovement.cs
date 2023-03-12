@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject FireballPrefap;
     public float Speed = 4;
     public float JumpStringth = 250;
+    public int ReplayAfterY = -40;
+
 
     public bool isGrounded = false;
     public bool isDead = false;
@@ -50,6 +53,13 @@ public class PlayerMovement : MonoBehaviour
 
         //right movement GetAxis("Horizontal") between 0 ,1 (float)
         //left movement GetAxis("Horizontal") between 0 , - 1 (float)
+
+
+        if (transform.position.y < ReplayAfterY)
+        {
+            ReplayGame();
+        }
+
 
         if (Input.GetKeyDown(KeyCode.Space)&& isGrounded)
         {
@@ -191,5 +201,11 @@ public class PlayerMovement : MonoBehaviour
     {
         isHurt = false;
         renderer.color = Color.white;
+    }
+
+
+    void ReplayGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

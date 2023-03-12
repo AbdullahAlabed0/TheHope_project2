@@ -16,8 +16,17 @@ public class EndGameScript : MonoBehaviour
 
     IEnumerator LoadSceneAgain()
     {
+        Debug.Log("load scene again ");
         yield return new WaitForSeconds(1f);
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // play sound
+        SoundManager.instance.PlayFinishSound();
+        Debug.Log("Play finish sound ");
+
+        yield return new WaitForSeconds(3f);
+        Debug.Log("reload the same active scene ");
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //load level 2
+        SceneManager.LoadScene("Level2");
     }
 }

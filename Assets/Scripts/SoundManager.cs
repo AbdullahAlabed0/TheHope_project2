@@ -6,7 +6,7 @@ public class SoundManager : MonoBehaviour
 {
     public AudioSource HittSound;
     public AudioSource gameoverSound;
-
+    public AudioSource finishSound;
 
     public static SoundManager instance;
     private void Awake()
@@ -33,5 +33,11 @@ public class SoundManager : MonoBehaviour
     public void StopGameOverSound()
     {
         gameoverSound.Stop();
+    }
+
+
+    public void PlayFinishSound()
+    {
+        finishSound.Play();
     }
 }
